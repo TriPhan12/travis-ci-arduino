@@ -8,7 +8,7 @@ fi
 
 # associative array for the platforms that will be verified in build_main_platforms()
 # this will be eval'd in the functions below because arrays can't be exported
-export MAIN_PLATFORMS='declare -A main_platforms=( [uno]="arduino:avr:uno" [due]="arduino:sam:arduino_due_x" [zero]="arduino:samd:zero" [esp8266]="esp8266:esp8266:huzzah" [leonardo]="arduino:avr:leonardo" )'
+export MAIN_PLATFORMS='declare -A main_platforms=( [uno]="arduino:avr:uno" [due]="arduino:sam:arduino_due_x" [zero]="arduino:samd:zero" [esp8266]="esp8266com:esp8266:generic:UploadTool=esptool,CpuFrequency=80,FlashFreq=40,FlashMode=dio,UploadSpeed=115200,FlashSize=512K64" [leonardo]="arduino:avr:leonardo" )'
 
 # associative array for other platforms that can be called explicitly in .travis.yml configs
 # this will be eval'd in the functions below because arrays can't be exported
@@ -20,7 +20,7 @@ sleep 3
 export DISPLAY=:1.0
 
 # download and install arduino
-ARDUINO_VERSION=nightly
+ARDUINO_VERSION=1.8.5
 wget https://downloads.arduino.cc/arduino-$ARDUINO_VERSION-linux64.tar.xz
 tar xf arduino-$ARDUINO_VERSION-linux64.tar.xz
 mv arduino-$ARDUINO_VERSION $HOME/arduino_ide
